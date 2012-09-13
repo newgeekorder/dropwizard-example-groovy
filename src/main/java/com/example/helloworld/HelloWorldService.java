@@ -14,6 +14,7 @@ import com.yammer.dropwizard.bundles.AssetsBundle;
 import com.yammer.dropwizard.config.Environment;
 import com.yammer.dropwizard.db.Database;
 import com.yammer.dropwizard.db.DatabaseFactory;
+import com.yammer.dropwizard.views.ViewBundle;
 
 import javax.ws.rs.Path;
 
@@ -27,6 +28,7 @@ public class HelloWorldService extends Service<HelloWorldConfiguration> {
         addCommand(new RenderCommand());
         addCommand(new SetupDatabaseCommand());
         addBundle(new AssetsBundle());
+        addBundle(new ViewBundle());
     }
 
     @Override
@@ -41,11 +43,11 @@ public class HelloWorldService extends Service<HelloWorldConfiguration> {
         final Database db = factory.build(configuration.getDatabaseConfiguration(), "h2");
         final PeopleDAO peopleDAO = db.onDemand(PeopleDAO.class);
 
-
         environment.addHealthCheck(new TemplateHealthCheck(template));
         environment.addResource(new HelloWorldResource(template));
         environment.addResource(new GroovyHelloWorldResource(template));
         environment.addResource(new ProtectedResource());
+        environment.addResource(new ViewResource());
 
         environment.addResource(new PeopleResource(peopleDAO));
         environment.addResource(new PersonResource(peopleDAO));

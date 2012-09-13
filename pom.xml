@@ -5,7 +5,7 @@
 
     <groupId>com.yammer.dropwizard</groupId>
     <artifactId>dropwizard-example</artifactId>
-    <version>0.5.0-SNAPSHOT</version>
+    <version>0.5.2-SNAPSHOT</version>
     <name>Dropwizard Example Application</name>
 
     <repositories>
@@ -35,6 +35,11 @@
         </dependency>
         <dependency>
             <groupId>com.yammer.dropwizard</groupId>
+            <artifactId>dropwizard-views</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.yammer.dropwizard</groupId>
             <artifactId>dropwizard-db</artifactId>
             <version>${project.version}</version>
         </dependency>
@@ -56,6 +61,11 @@
             <version>${project.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.apache.velocity</groupId>
+            <artifactId>velocity</artifactId>
+            <version>1.7</version>
+        </dependency>
         <dependency>
             <groupId>org.codehaus.groovy</groupId>
             <artifactId>groovy-eclipse-batch</artifactId>
