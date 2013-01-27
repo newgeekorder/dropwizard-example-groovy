@@ -1,0 +1,33 @@
+database:
+  driverClass: org.postgresql.Driver
+  user: ajordens
+  # password:
+  url: jdbc:postgresql://localhost/myexampleDB
+  validationQuery: "/* My Example Service Service Health Check */ SELECT 1"
+
+http:
+  port: 8080
+  adminPort: 8081
+  connectorType: legacy
+  rootPath: /*
+  ssl:
+    keyStore:
+    keyStorePassword:
+
+logging:
+  level: INFO
+  console:
+    threshold: INFO
+    timeZone: "America/Los_Angeles"
+  file:
+    enabled: true
+    threshold: INFO
+    currentLogFilename: logs/log4j.my-example-service
+    archivedLogFilenamePattern: logs/log4j.my-example-service.%d.gz
+    archivedFileCount: 7
+    timeZone: "America/Los_Angeles"
+  syslog:
+    enabled: false
+    threshold: INFO
+    host: localhost
+    facility: user
